@@ -48,14 +48,6 @@ jobs:
           node-version: '16'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Setup NODE_ENV
-        run: |
-          export NODE_ENV=${{ github.event.inputs.node-env }}
-
-      - name: Setup Base URL
-        run: |
-          echo "NEXT_PUBLIC_BASE_PATH=${{ github.event.inputs.base-url }}" >> .env.${{ github.event.inputs.node-env }}.local
-
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -73,6 +65,9 @@ jobs:
       - name: Build with Next.js and export Static HTML
         # "next export" is no longer needed when "output: export" is configured in next.config.js https://nextjs.org/docs/advanced-features/static-html-export
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ inputs.base-path }}
+          NODE_ENV: ${{ inputs.node-env }}
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
