@@ -14,7 +14,7 @@ on:
         description: 'Node environment'
         type: string
         required: false
-        default: 'test'
+        default: 'development'
 
 jobs:
   # Build job

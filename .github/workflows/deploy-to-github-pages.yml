@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/nextjs-build.yml
+    with:
+      base-path: /profile/${{ github.sha }}
+      node-env: test
+
+  deloy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build-${{ github.sha }}
+          path: ./${{ github.sha }}
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: github-pages-for-check-pr
+          folder: ./${{ github.sha }}
+          target-folder: ./${{ github.sha }}
+
+      - run: echo "https://kuroicc.github.io/profile/${{ github.sha }}"
+      - name: Output the url
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'https://kuroicc.github.io/profile/${{ github.sha }}'
+            })
+
+      - name: Delete a Build Artifact
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: build-${{ github.sha }}
