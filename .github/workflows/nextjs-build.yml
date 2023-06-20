@@ -1,11 +1,20 @@
 name: Build Next.js
 
 on:
-  pull_request:
-    branches:    
-      - main
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      base-path:
+        description: 'Base path for the site'
+        type: string
+        required: false
+        default: ''
+      node-env:
+        description: 'Node environment'
+        type: string
+        required: false
+        default: 'development'
 
 jobs:
   # Build job
@@ -14,6 +23,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -31,11 +41,13 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: '16'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -46,9 +58,20 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
+
+      - name: Build with Next.js and export Static HTML
+        # "next export" is no longer needed when "output: export" is configured in next.config.js https://nextjs.org/docs/advanced-features/static-html-export
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ inputs.base-path }}
+          NODE_ENV: ${{ inputs.node-env }}
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ github.sha }}
+          path: ./out
+          if-no-files-found: error
