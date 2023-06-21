@@ -1,3 +1,12 @@
+SCP_HOST
+SCP_PORT
+SCP_USERNAME
+SCP_PASSPHRASE
+SCP_KEY
+SCP_TARGET_STAGING
+
+SCP_STAGING_BASE_PATH
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
