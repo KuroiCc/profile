@@ -38,6 +38,7 @@ jobs:
           port: ${{ secrets.SCP_PORT }}
           source: ./out/*
           target: ${{ secrets.SCP_TARGET_STAGING }}
+          strip_components: 1
 
       - name: Delete a Build Artifact 🗑️
         uses: geekyeggo/delete-artifact@v2
