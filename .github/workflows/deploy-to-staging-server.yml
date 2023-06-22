@@ -36,7 +36,7 @@ jobs:
           key: ${{ secrets.SCP_KEY }}
           passphrase: ${{ secrets.SCP_PASSPHRASE }}
           port: ${{ secrets.SCP_PORT }}
-          source: ./out
+          source: ./out/*
           target: ${{ secrets.SCP_TARGET_STAGING }}
 
       - name: Delete a Build Artifact 🗑️
