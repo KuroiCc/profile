@@ -15,6 +15,7 @@ for (const [key, value] of Object.entries(imagePaths)) {
   }
 }
 
-export const images = {
-  selfIcon: assetsSrcLoader(`${imagePathPrefix}${imagePaths.selfIcon}`),
-}
+export const images: typeof imagePaths = Object.entries(imagePaths).reduce((acc, [key, value]) => {
+  acc[key] = assetsSrcLoader(imagePathPrefix + value)
+  return acc
+}, {} as any)

@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
-import { images } from '../assets/images'
-import { icons } from '../assets/icons'
+import { images, icons } from '../assets'
 
 export default function Home() {
   return (

@@ -17,8 +17,7 @@ for (const [key, value] of Object.entries(iconsPaths)) {
   }
 }
 
-export const icons = {
-  AGUIcon: assetsSrcLoader(`${iconsPathPrefix}${iconsPaths.AGUIcon}`),
-  MyjLabIcon: assetsSrcLoader(`${iconsPathPrefix}${iconsPaths.MyjLabIcon}`),
-  SSIIcon: assetsSrcLoader(`${iconsPathPrefix}${iconsPaths.SSIIcon}`),
-}
+export const icons: typeof iconsPaths = Object.entries(iconsPaths).reduce((acc, [key, value]) => {
+  acc[key] = assetsSrcLoader(iconsPathPrefix + value)
+  return acc
+}, {} as any)
