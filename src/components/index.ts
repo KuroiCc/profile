@@ -1,0 +1,6 @@
+export * from './CodeAnimation'
+export * from './Profile'
+export * from './ProfileDetail'
+export * from './TechGallery'
+// export * from './Works'
+// export * from './ItIcon'
