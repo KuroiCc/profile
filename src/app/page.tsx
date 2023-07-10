@@ -3,6 +3,11 @@ import { CodeAnimation, Profile, ProfileDetail } from '../components'
 export default function Home() {
   return (
     <main>
+      <div className="h-72 flex justify-center">
+        <span className="text-8xl text-white">
+          楽したい！！！！！！！
+        </span>
+      </div>
       <div className="m-auto md:mb-10 md:w-5/6 max-w-7xl md:py-7">
         <CodeAnimation />
       </div>
