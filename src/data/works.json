@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Profile Site",
+    "github": "https://github.com/KuroiCc/profile-site",
+    "deployed": "http://kuroi.link/",
+    "description": "プロフィールサイト、今見ているこのサイトです。React.js+TypeScript+TailwindCSSで作成しました。Headerのアニメーションはcssのみで作りました。"
+  },
+  {
+    "title": "有名人と顔の類似度",
+    "github": "https://github.com/KuroiCc/myjlab2021-2nd-final-work",
+    "deployed": "http://kuroi.link/star_face_similarity/",
+    "description": "どの有名人と一番似ているかを比較します。"
+  },
+  {
+    "title": "greedy_snake",
+    "github": "#",
+    "deployed": "http://kuroi.link/greedy_snake/",
+    "description": "クラシックなgreedy_snakeゲームです。TypeScript練習用プロジェクトです。"
+  },
+  {
+    "title": "麻雀ふ数計算",
+    "github": "https://github.com/KuroiCc/mahjong-record-counter-react",
+    "deployed": "http://kuroi.link/count_points/",
+    "description": "麻雀ふ数を簡単に計算できるアプリです。"
+  },
+  {
+    "title": "麻雀点数数集計",
+    "github": "https://github.com/KuroiCc/mahjong-record-counter-python",
+    "deployed": "http://kuroi.link/mahjong_record_counter/",
+    "description": "麻雀の点数を簡単に集計できるアプリです。"
+  }
+]
