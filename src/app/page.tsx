@@ -1,5 +1,27 @@
+import type { Metadata } from 'next'
 import { CodeAnimation, Profile, ProfileDetail, Works } from '../components'
 import { getWordCardDate } from '../helpers'
+
+export const metadata: Metadata = {
+  title: "Kuroi_Cc's profile site",
+  description: "Kuroi_Cc's profile site",
+  openGraph: {
+    title: "Kuroi_Cc's profile site",
+    description: "Kuroi_Cc's profile site",
+    type: 'website',
+    url: 'https://kuroi.link/',
+    locale: 'ja_JP',
+    // TODO: set ogp.png
+    // images: [
+    //   {
+    //     url: 'https://kuroi.link/ogp.png',
+    //     width: 1200,
+    //     height: 630,
+    //     alt: 'Kuroi_Cc&rsquo;s profile site',
+    //   },
+    // ],
+  },
+}
 
 export default async function Home() {
   const wordCardDate = await getWordCardDate()
