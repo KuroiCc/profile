@@ -1,17 +1,24 @@
-import Image from 'next/image'
+import { CodeAnimation, Profile, ProfileDetail, Works } from '../components'
+import { getWordCardDate } from '../helpers'
 
-import { images, icons } from '../assets'
+export default async function Home() {
+  const wordCardDate = await getWordCardDate()
 
-export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between space-y-20 p-24">
-      <h1 className="bg-teal-400">非常简单的测试页面</h1>
-      {Object.entries(images).map(([key, value]) => (
-        <Image key={key} src={value} alt={key} width={100} height={24} />
-      ))}
-      {Object.entries(icons).map(([key, value]) => (
-        <Image className="bg-teal-500" key={key} src={value} alt={key} width={24} height={24} />
-      ))}
+    <main>
+      <div className="m-auto md:mb-10 md:w-5/6 max-w-7xl md:py-7">
+        <CodeAnimation />
+      </div>
+      <div className="px-6 py-1 m-auto font-mono text-lg bg-rose-600 text-zinc-100">Oops! You found here!</div>
+      <div className="m-auto">
+        <Profile />
+      </div>
+      <div className="m-auto">
+        <ProfileDetail />
+      </div>
+      <div className="m-auto">
+        <Works wordCardDate={wordCardDate} />
+      </div>
     </main>
   )
 }
