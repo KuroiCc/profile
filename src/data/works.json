@@ -1,7 +1,7 @@
 [
   {
     "title": "Profile Site",
-    "github": "https://github.com/KuroiCc/profile-site",
+    "github": "https://github.com/KuroiCc/profile",
     "deployed": "http://kuroi.link/",
     "description": "プロフィールサイト、今見ているこのサイトです。React.js+TypeScript+TailwindCSSで作成しました。Headerのアニメーションはcssのみで作りました。"
   },
