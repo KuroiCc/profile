@@ -1,9 +1,9 @@
-name: Deploy to Staging
+name: Deploy to Production
 
 on:
   push:
     branches:
-      - staging
+      - main
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
     name: Build 🔧
     uses: ./.github/workflows/nextjs-build.yml
     with:
-      base-path: ${{ vars.SCP_STAGING_BASE_PATH }}
+      base-path: ''
       node-env: production
 
   deloy:
@@ -37,7 +37,7 @@ jobs:
           passphrase: ${{ secrets.SCP_PASSPHRASE }}
           port: ${{ secrets.SCP_PORT }}
           source: ./out/*
-          target: ${{ secrets.SCP_TARGET_STAGING }}
+          target: ${{ secrets.SCP_TARGET_PRODUCTION }}
           strip_components: 1
 
       - name: Delete a Build Artifact 🗑️
