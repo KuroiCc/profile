@@ -3,9 +3,9 @@ import { GitHubIcon } from '../components/Icons'
 
 export type WorkCardProps = {
   title: string
-  github: string
+  github?: string
   language: string[]
-  deployed: string
+  deployed?: string
   description: string
 }
 
