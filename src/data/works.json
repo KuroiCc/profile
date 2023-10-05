@@ -12,10 +12,9 @@
     "description": "どの有名人と一番似ているかを比較します。"
   },
   {
-    "title": "greedy_snake",
-    "github": "#",
-    "deployed": "http://kuroi.link/greedy_snake/",
-    "description": "クラシックなgreedy_snakeゲームです。TypeScript練習用プロジェクトです。"
+    "title": "share-game",
+    "github": "https://github.com/2021myj-j/share-game",
+    "description": "Youtubeのコメントからコマンドと読み込み、配信部屋のみんなでゲームできるprjです"
   },
   {
     "title": "麻雀ふ数計算",
